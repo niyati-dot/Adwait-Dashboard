@@ -1,0 +1,221 @@
+{% extends 'adwaitapp/base.html' %}
+
+{% block content %}
+
+<div class="bg-gray-200 text-sm">
+  <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0 py-3">
+        <li class="breadcrumb-item"><a class="fw-light" href="{% url 'dashboard' %}">Home</a></li>
+        <li class="breadcrumb-item active fw-light" aria-current="page">Developers </li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<section class="tables pt-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-5" {% if not is_edit %} style="display: block;" {% else %} style="display: none;"{% endif %}>
+        <div class="card">
+          <div class="card-header border-bottom">
+            <h3 class="h4 mb-0">Add Developer</h3>
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal" method="post" action="{% url 'developers_add' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Name *</label>
+                  <input class="form-control" type="text" name="name" placeholder="Enter Name" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Email *</label>
+                  <input class="form-control" type="email" name="email" placeholder="Enter Email" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Phone </label>
+                  <input class="form-control" type="phone" name="phone" placeholder="Enter Phone">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-6">
+                  <label class="form-label">Country *</label>
+                  <input class="form-control" type="text" name="country" placeholder="Enter country" required>
+                </div>
+                <div class="col-sm-6">
+                  <label class="form-label">Rate </label>
+                  <input class="form-control" type="number" name="rate" placeholder="Enter rate (1-5)" min="1" max="5" step="1" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">More Info </label>
+                  <textarea class="form-control" rows="2" name="more_info" placeholder="Any Notes..."></textarea>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-6">
+                  <label class="form-label" for="department">Department *</label>
+                  <select class="form-select" size="2" id="department" name="dept_id" required>
+                    {% for de in dep %}
+                    <option value="{{de.id}}">{{de.name}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-sm-6">
+                  <label class="form-label">Document </label>
+                  <input class="form-control" id="file" type="file" name="file">
+                </div>
+              </div>
+              <div class="border-bottom my-3 border-gray-200"></div>
+              <div class="row">
+                <div class="col-sm-9">
+                  <button class="btn btn-primary" type="submit">Save changes</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-5" {% if is_edit %} style="display: block;"{% else %} style="display: none;"{% endif %} >
+        <div class="card">
+          <div class="card-header border-bottom">
+            <h3 class="h4 mb-0">Edit Developer</h3>
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Name *</label>
+                  <input class="form-control" type="text" name="name" value="{{ developer.name }}" placeholder="Enter Name" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Email *</label>
+                  <input class="form-control" type="email" name="email" placeholder="Enter Email" value="{{ developer.email }}" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Phone *</label>
+                  <input class="form-control" type="phone" name="phone" placeholder="Enter Phone" value="{{ developer.phone }}" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-6">
+                  <label class="form-label">Country *</label>
+                  <input class="form-control" type="text" name="country" placeholder="Enter country" value="{{ developer.country }}" required>
+                </div>
+                <div class="col-sm-6">
+                  <label class="form-label">Rate </label>
+                  <input class="form-control" type="number" name="rate" placeholder="Enter rate (1-5)" min="1" max="5" step="1" value="{{ developer.rate }}" max="5" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">More Info </label>
+                  <textarea class="form-control" rows="2" name="more_info" placeholder="Any Notes...">{{ developer.more_info }}</textarea>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-6">
+                  <label class="form-label" for="department">Department *</label>
+                  <select class="form-select" size="2" id="department" name="dept_id" required>
+                    {% for de in dep %}
+                    <option value="{{de.id}}" {% if de.id == developer.dept_id_id %} selected {% endif %} >{{de.name}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-sm-6">
+                  <label class="form-label">Document </label><br>{% if developer.file %}<img src="../media/{{ developer.file }}" width="100" height="100">
+                  <input class="form-control" id="file" type="file" name="file">{% endif %}
+                </div>
+              </div>
+              <div class="border-bottom my-3 border-gray-200"></div>
+              <div class="row">
+                <div class="col-sm-9">
+                  <button class="btn btn-secondary"><a href="{% url 'developers' %}" class="t-white">Close</a></button>
+                  <button class="btn btn-primary" type="submit">Save changes</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="card">
+          <div class="card-header border-bottom" style="display: inline-flex;">
+            <h3 class="h4 mb-0 w-100 mt-2">All Developers</h3>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table text-sm mb-0">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Country</th>
+                    <th>Ratings</th>
+                    <th>Edit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  {% for devs in developers %}
+                  <tr>
+                    <th class="border-bottom-0" scope="row">{{forloop.counter}}</th>
+                    <td class="border-bottom-0">{{devs.name}}</td>
+                    <td class="border-bottom-0">{{devs.email}}</td>
+                    <td class="border-bottom-0">{{devs.country}}</td>
+                    <td class="border-bottom-0"> 
+                      <div class="rating">
+                        {% for i in range %}
+                          {% if i <= devs.rate %}
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                          {% else %}
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    </td>
+                    <td class="border-bottom-0"><button class="btn btn-warning btnedit" type="edit"><a
+                          href="{% url 'developers_edit' devs.id %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <div class="pagination">
+                <span class="step-links">
+                    {% if developers.has_previous %}
+                        <a href="?page=1"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+                        <a href="?page={{ developers.previous_page_number }}">{{ developers.previous_page_number}}</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        {{ developers.number }}
+                    </span>
+            
+                    {% if developers.has_next %}
+                        <a href="?page={{ developers.next_page_number }}">{{ developers.next_page_number }}</a>
+                        {% if developers.next_page_number != developers.paginator.num_pages %}
+                        <a href="?page={{ developers.paginator.num_pages }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                        {% endif %}
+                    {% endif %}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

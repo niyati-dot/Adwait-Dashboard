@@ -1,0 +1,136 @@
+{% extends 'adwaitapp/base.html' %}
+
+{% block content %}
+
+<div class="bg-gray-200 text-sm">
+  <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0 py-3">
+        <li class="breadcrumb-item"><a class="fw-light" href="{% url 'dashboard' %}">Home</a></li>
+        <li class="breadcrumb-item active fw-light" aria-current="page">Inquiries </li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<section class="tables pt-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-header border-bottom" style="display: inline-flex;">
+            <h3 class="h4 mb-0 w-100 mt-2">Website inquiries</h3>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table text-sm mb-0">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Status</th>
+                    <th>Edit</th>
+                  </tr>
+                </thead>
+                <tbody>   
+                  {% for inquir in inquiries %}
+                  <tr>
+                    <th class="border-bottom-0" scope="row">{{forloop.counter}}</th>
+                    <td class="border-bottom-0">{{inquir.name}}</td>
+                    <td class="border-bottom-0">{{inquir.email}}</td>
+                    <td class="border-bottom-0">{{inquir.subject}}</td>
+                    <td class="border-bottom-0">{% if inquir.status == 1 %} Received {% elif inquir.status == 2 %} Follow Up {% else %} Completed {% endif %}</td>
+                    <td class="border-bottom-0"><button class="btn btn-warning btnedit" type="edit"><a
+                          href="{% url 'inquiry_edit' inquir.id %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <div class="pagination">
+                <span class="step-links">
+                    {% if inquiries.has_previous %}
+                        <a href="?page=1"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+                        <a href="?page={{ inquiries.previous_page_number }}">{{ inquiries.previous_page_number}}</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        {{ inquiries.number }}
+                    </span>
+            
+                    {% if inquiries.has_next %}
+                        <a href="?page={{ inquiries.next_page_number }}">{{ inquiries.next_page_number }}</a>
+                        {% if inquiries.next_page_number != inquiries.paginator.num_pages %}
+                        <a href="?page={{ inquiries.paginator.num_pages }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                        {% endif %}
+                    {% endif %}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4" {% if is_edit %} style="display: block;"{% else %} style="display: none;"{% endif %} >
+        <div class="card">
+          <div class="card-header border-bottom">
+            <h3 class="h4 mb-0">Edit Inquiry</h3>
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Name </label>
+                  <input class="form-control" type="text" name="name" value="{{ inquiry.name }}" readonly>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Email </label>
+                  <input class="form-control" type="email" name="email" value="{{ inquiry.email }}" readonly>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Subject </label>
+                  <input class="form-control" type="text" name="subject" value="{{ inquiry.subject }}" readonly>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Message </label>
+                  <textarea class="form-control" rows="3" cols="5" name="message" readonly>{{ inquiry.message }}</textarea>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label" for="status">Status </label>
+                  <select class="form-select" id="status" name="status">
+                    <option value="1" {% if inquiry.status == 1 %}selected{% endif %}>Received</option>
+                    <option value="2" {% if inquiry.status == 2 %}selected{% endif %}>Follow Up</option>
+                    <option value="0" {% if inquiry.status == 0 %}selected{% endif %}>Completed</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Notes</label>
+                  <textarea class="form-control" rows="3" cols="5" name="notes">{{ inquiry.notes }}</textarea>
+                </div>
+              </div>
+              <div class="border-bottom my-3 border-gray-200"></div>
+              <div class="row">
+                <div class="col-sm-9">
+                  <button class="btn btn-secondary"><a href="{% url 'inquiry' %}" class="t-white">Close</a></button>
+                  <button class="btn btn-primary" type="submit">Save changes</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+{% endblock %}

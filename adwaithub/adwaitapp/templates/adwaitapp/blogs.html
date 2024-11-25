@@ -1,0 +1,252 @@
+{% extends 'adwaitapp/base.html' %}
+
+{% block content %}
+
+<div class="bg-gray-200 text-sm">
+  <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0 py-3">
+        <li class="breadcrumb-item"><a class="fw-light" href="{% url 'dashboard' %}">Home</a></li>
+        <li class="breadcrumb-item active fw-light" aria-current="page">Blogs </li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<section class="tables pt-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-7" {% if not is_edit %} style="display: block;" {% else %} style="display: none;"{% endif %}>
+        <div class="card">
+          <div class="card-header border-bottom">
+            <h3 class="h4 mb-0">Add Blog</h3>
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal" method="post" action="{% url 'blogs_add' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Subject *</label>
+                  <input class="form-control" type="text" name="subject" placeholder="Enter Blog Title" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">URL *</label>
+                  <input class="form-control" type="text" name="url" placeholder="Enter Blog URL" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Description *</label>
+                  <textarea class="form-control" rows="2" name="description" placeholder="Short Description..." required></textarea>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">SEO Keywords *</label>
+                  <textarea class="form-control" rows="2" cols="5" name="seo_keywords" placeholder="Keywords..."></textarea>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-7">
+                  <label class="form-label">Tags </label>
+                  <input class="form-control" type="text" name="tags" placeholder="Enter Tags" required>
+                </div>
+                <div class="col-sm-5">
+                  <label class="form-label">Blog Poster *</label>
+                  <small class="italic-text">For Index Page</small>
+                  <input class="form-control" id="formFile" type="file" name="img" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-6">
+                  <label class="form-label" for="department">Department *</label>
+                  <select class="form-select" size="2" id="department" name="dept_id" required>
+                    {% for de in dep %}
+                    <option value="{{de.id}}">{{de.name}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-sm-6">
+                  <label class="form-label" for="main_service">Service *</label>
+                  <select class="form-select" size="2" id="main_service" name="main_service_id" required>
+                    {% for ser in main %}
+                    <option value="{{ser.id}}">{{ser.name}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Content</label>
+                  <textarea class="form-control" rows="8" cols="5" id="blogaddeditor" name="content" placeholder="Blog Content..."></textarea>
+                </div>
+              </div>
+              <div class="border-bottom my-3 border-gray-200"></div>
+              <div class="row">
+                <div class="col-sm-9">
+                  <button class="btn btn-primary" type="submit">Save changes</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-7" {% if is_edit %} style="display: block;"{% else %} style="display: none;"{% endif %} >
+        <div class="card">
+          <div class="card-header border-bottom">
+            <h3 class="h4 mb-0">Edit Blog</h3>
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Subject *</label>
+                  <input class="form-control" type="text" name="subject" placeholder="Enter Blog Title" value="{{ blog.subject }}" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">URL *</label>
+                  <input class="form-control" type="text" name="url" placeholder="Enter Blog URL" value="{{ blog.url }}" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Description *</label>
+                  <textarea class="form-control" rows="2" cols="5" name="description" placeholder="Short Description..." required>{{ blog.description }}</textarea>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">SEO Keywords *</label>
+                  <textarea class="form-control" rows="2" cols="5" name="seo_keywords" placeholder="Keywords...">{{ blog.seo_keywords }}</textarea>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-7">
+                  <label class="form-label">Tags </label>
+                  <input class="form-control" type="text" name="tags" placeholder="Enter Tags" value="{{ blog.tags }}" required>
+                </div>
+                <div class="col-sm-5">
+                  <label class="form-label">Blog Poster </label><br>{% if blog.img %}<img src="../media/{{ blog.img }}" width="100" height="100">
+                  <small class="italic-text">For Index Page</small>
+                  <input class="form-control" id="formFile" type="file" name="img">{% endif %}
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-6">
+                  <label class="form-label" for="department">Department *</label>
+                  <select class="form-select" size="2" id="department" name="dept_id" required>
+                    {% for de in dep %}
+                    <option value="{{de.id}}" {% if de.id == blog.dept_id_id %} selected {% endif %} >{{de.name}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="col-sm-6">
+                  <label class="form-label" for="main_service">Services </label>
+                  <select class="form-select" size="2" id="main_service" name="main_service_id" required>
+                    {% for ser in main %}
+                    <option value="{{ser.id}}" {% if ser.id == blog.main_service_id_id %} selected {% endif %} >{{ser.name}}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Content</label>
+                  <textarea class="form-control" rows="8" cols="5" id="blogeditor" name="content" placeholder="Blog Content...">{{ blog.content }}</textarea>
+                </div>
+              </div>
+              <div class="border-bottom my-3 border-gray-200"></div>
+              <div class="row">
+                <div class="col-sm-9">
+                  <button class="btn btn-secondary"><a href="{% url 'blogs' %}" class="t-white">Close</a></button>
+                  <button class="btn btn-primary" type="submit">Save changes</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="card">
+          <div class="card-header border-bottom" style="display: inline-flex;">
+            <h3 class="h4 mb-0 w-100 mt-2">All Active Blogs</h3>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table text-sm mb-0">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Subject</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                  {% for blogss in blogs %}
+                  <tr>
+                    <th class="border-bottom-0" scope="row">{{forloop.counter}}</th>
+                    <td class="border-bottom-0">{{blogss.subject}}</td>
+                    <td class="border-bottom-0"><button class="btn btn-warning btnedit" type="edit"><a
+                          href="{% url 'blogs_edit' blogss.id %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button></td>
+                    <td class="border-bottom-0"><button class="btn btn-danger btnedit" type="delete" onclick="return confirm('Are you sure you want to Delete?')"><a href="{% url 'blogs_delete' blogss.id %}"><i
+                          class="fa fa-trash-o" aria-hidden="true"></i></a></button></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <div class="pagination">
+                <span class="step-links">
+                    {% if blogs.has_previous %}
+                        <a href="?page=1"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+                        <a href="?page={{ blogs.previous_page_number }}">{{ blogs.previous_page_number}}</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        {{ blogs.number }}
+                    </span>
+            
+                    {% if blogs.has_next %}
+                        <a href="?page={{ blogs.next_page_number }}">{{ blogs.next_page_number }}</a>
+                        {% if blogs.next_page_number != blogs.paginator.num_pages %}
+                        <a href="?page={{ blogs.paginator.num_pages }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                        {% endif %}
+                    {% endif %}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      ClassicEditor
+          .create(document.querySelector('#blogaddeditor'))
+          .then(editor => {
+              console.log(editor);
+          })
+          .catch(error => {
+              console.error(error);
+          });
+
+      ClassicEditor
+          .create(document.querySelector('#blogeditor'))
+          .then(editor => {
+              console.log(editor);
+          })
+          .catch(error => {
+              console.error(error);
+          });
+  });
+</script>
+{% endblock %}

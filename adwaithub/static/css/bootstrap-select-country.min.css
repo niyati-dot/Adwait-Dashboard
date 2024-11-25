@@ -1,0 +1,518 @@
+.f16.flag {
+  display: inline - block;
+  height: 16 px;width: 16 px;
+  line-height: 16 px;
+  background: url(images/flags16.png) no-repeat
+}
+.f16._African_Union {
+  background-position:0-16 px
+}.f16._Arab_League {
+  background-position:0-32 px
+}.f16._ASEAN {
+  background-position:0-48 px
+}.f16._CARICOM {
+  background-position:0-64 px
+}.f16._CIS {
+  background-position:0-80 px
+}.f16._Commonwealth {
+  background-position:0-96 px
+}.f16._England {
+  background-position:0-112 px
+}.f16._European_Union, .f16.eu {
+  background-position:0-128 px
+}.f16._Islamic_Conference {
+  background-position:0-144 px
+}.f16._Kosovo {
+  background-position:0-160 px
+}.f16._NATO {
+  background-position:0-176 px
+}.f16._Northern_Cyprus {
+  background-position:0-192 px
+}.f16._Northern_Ireland {
+  background-position:0-208 px
+}.f16._Olimpic_Movement {
+  background-position:0-224 px
+}.f16._OPEC {
+  background-position:0-240 px
+}.f16._Red_Cross {
+  background-position:0-256 px
+}.f16._Scotland {
+  background-position:0-272 px
+}.f16._Somaliland {
+  background-position:0-288 px
+}.f16._Tibet {
+  background-position:0-304 px
+}.f16._United_Nations {
+  background-position:0-320 px
+}.f16._Wales {
+  background-position:0-336 px
+}.f16.ad {
+  background-position:0-352 px
+}.f16.ae {
+  background-position:0-368 px
+}.f16.af {
+  background-position:0-384 px
+}.f16.ag {
+  background-position:0-400 px
+}.f16.ai {
+  background-position:0-416 px
+}.f16.al {
+  background-position:0-432 px
+}.f16.am {
+  background-position:0-448 px
+}.f16.ao {
+  background-position:0-464 px
+}.f16.aq {
+  background-position:0-480 px
+}.f16.ar {
+  background-position:0-496 px
+}.f16.as {
+  background-position:0-512 px
+}.f16.at {
+  background-position:0-528 px
+}.f16.au {
+  background-position:0-544 px
+}.f16.aw {
+  background-position:0-560 px
+}.f16.ax {
+  background-position:0-576 px
+}.f16.az {
+  background-position:0-592 px
+}.f16.ba {
+  background-position:0-608 px
+}.f16.bb {
+  background-position:0-624 px
+}.f16.bd {
+  background-position:0-640 px
+}.f16.be {
+  background-position:0-656 px
+}.f16.bf {
+  background-position:0-672 px
+}.f16.bg {
+  background-position:0-688 px
+}.f16.bh {
+  background-position:0-704 px
+}.f16.bi {
+  background-position:0-720 px
+}.f16.bj {
+  background-position:0-736 px
+}.f16.bm {
+  background-position:0-752 px
+}.f16.bn {
+  background-position:0-768 px
+}.f16.bo {
+  background-position:0-784 px
+}.f16.br {
+  background-position:0-800 px
+}.f16.bs {
+  background-position:0-816 px
+}.f16.bt {
+  background-position:0-832 px
+}.f16.bw {
+  background-position:0-848 px
+}.f16.by {
+  background-position:0-864 px
+}.f16.bz {
+  background-position:0-880 px
+}.f16.ca {
+  background-position:0-896 px
+}.f16.cg {
+  background-position:0-912 px
+}.f16.cf {
+  background-position:0-928 px
+}.f16.cd {
+  background-position:0-944 px
+}.f16.ch {
+  background-position:0-960 px
+}.f16.ci {
+  background-position:0-976 px
+}.f16.ck {
+  background-position:0-992 px
+}.f16.cl {
+  background-position:0-1008 px
+}.f16.cm {
+  background-position:0-1024 px
+}.f16.cn {
+  background-position:0-1040 px
+}.f16.co {
+  background-position:0-1056 px
+}.f16.cr {
+  background-position:0-1072 px
+}.f16.cu {
+  background-position:0-1088 px
+}.f16.cv {
+  background-position:0-1104 px
+}.f16.cy {
+  background-position:0-1120 px
+}.f16.cz {
+  background-position:0-1136 px
+}.f16.de {
+  background-position:0-1152 px
+}.f16.dj {
+  background-position:0-1168 px
+}.f16.dk {
+  background-position:0-1184 px
+}.f16.dm {
+  background-position:0-1200 px
+}.f16.do {
+  background-position:0-1216 px
+}.f16.dz {
+  background-position:0-1232 px
+}.f16.ec {
+  background-position:0-1248 px
+}.f16.ee {
+  background-position:0-1264 px
+}.f16.eg {
+  background-position:0-1280 px
+}.f16.eh {
+  background-position:0-1296 px
+}.f16.er {
+  background-position:0-1312 px
+}.f16.es {
+  background-position:0-1328 px
+}.f16.et {
+  background-position:0-1344 px
+}.f16.fi {
+  background-position:0-1360 px
+}.f16.fj {
+  background-position:0-1376 px
+}.f16.fm {
+  background-position:0-1392 px
+}.f16.fo {
+  background-position:0-1408 px
+}.f16.fr {
+  background-position:0-1424 px
+}.f16.bl, .f16.cp, .f16.mf, .f16.yt {
+  background-position:0-1424 px
+}.f16.ga {
+  background-position:0-1440 px
+}.f16.gb {
+  background-position:0-1456 px
+}.f16.sh {
+  background-position:0-1456 px
+}.f16.gd {
+  background-position:0-1472 px
+}.f16.ge {
+  background-position:0-1488 px
+}.f16.gg {
+  background-position:0-1504 px
+}.f16.gh {
+  background-position:0-1520 px
+}.f16.gi {
+  background-position:0-1536 px
+}.f16.gl {
+  background-position:0-1552 px
+}.f16.gm {
+  background-position:0-1568 px
+}.f16.gn {
+  background-position:0-1584 px
+}.f16.gp {
+  background-position:0-1600 px
+}.f16.gq {
+  background-position:0-1616 px
+}.f16.gr {
+  background-position:0-1632 px
+}.f16.gt {
+  background-position:0-1648 px
+}.f16.gu {
+  background-position:0-1664 px
+}.f16.gw {
+  background-position:0-1680 px
+}.f16.gy {
+  background-position:0-1696 px
+}.f16.hk {
+  background-position:0-1712 px
+}.f16.hn {
+  background-position:0-1728 px
+}.f16.hr {
+  background-position:0-1744 px
+}.f16.ht {
+  background-position:0-1760 px
+}.f16.hu {
+  background-position:0-1776 px
+}.f16.id {
+  background-position:0-1792 px
+}.f16.mc {
+  background-position:0-1792 px
+}.f16.ie {
+  background-position:0-1808 px
+}.f16.il {
+  background-position:0-1824 px
+}.f16.im {
+  background-position:0-1840 px
+}.f16.in {
+  background-position:0-1856 px
+}.f16.iq {
+  background-position:0-1872 px
+}.f16.ir {
+  background-position:0-1888 px
+}.f16.is {
+  background-position:0-1904 px
+}.f16.it {
+  background-position:0-1920 px
+}.f16.je {
+  background-position:0-1936 px
+}.f16.jm {
+  background-position:0-1952 px
+}.f16.jo {
+  background-position:0-1968 px
+}.f16.jp {
+  background-position:0-1984 px
+}.f16.ke {
+  background-position:0-2000 px
+}.f16.kg {
+  background-position:0-2016 px
+}.f16.kh {
+  background-position:0-2032 px
+}.f16.ki {
+  background-position:0-2048 px
+}.f16.km {
+  background-position:0-2064 px
+}.f16.kn {
+  background-position:0-2080 px
+}.f16.kp {
+  background-position:0-2096 px
+}.f16.kr {
+  background-position:0-2112 px
+}.f16.kw {
+  background-position:0-2128 px
+}.f16.ky {
+  background-position:0-2144 px
+}.f16.kz {
+  background-position:0-2160 px
+}.f16.la {
+  background-position:0-2176 px
+}.f16.lb {
+  background-position:0-2192 px
+}.f16.lc {
+  background-position:0-2208 px
+}.f16.li {
+  background-position:0-2224 px
+}.f16.lk {
+  background-position:0-2240 px
+}.f16.lr {
+  background-position:0-2256 px
+}.f16.ls {
+  background-position:0-2272 px
+}.f16.lt {
+  background-position:0-2288 px
+}.f16.lu {
+  background-position:0-2304 px
+}.f16.lv {
+  background-position:0-2320 px
+}.f16.ly {
+  background-position:0-2336 px
+}.f16.ma {
+  background-position:0-2352 px
+}.f16.md {
+  background-position:0-2368 px
+}.f16.me {
+  background-position:0-2384 px
+}.f16.mg {
+  background-position:0-2400 px
+}.f16.mh {
+  background-position:0-2416 px
+}.f16.mk {
+  background-position:0-2432 px
+}.f16.ml {
+  background-position:0-2448 px
+}.f16.mm {
+  background-position:0-2464 px
+}.f16.mn {
+  background-position:0-2480 px
+}.f16.mo {
+  background-position:0-2496 px
+}.f16.mq {
+  background-position:0-2512 px
+}.f16.mr {
+  background-position:0-2528 px
+}.f16.ms {
+  background-position:0-2544 px
+}.f16.mt {
+  background-position:0-2560 px
+}.f16.mu {
+  background-position:0-2576 px
+}.f16.mv {
+  background-position:0-2592 px
+}.f16.mw {
+  background-position:0-2608 px
+}.f16.mx {
+  background-position:0-2624 px
+}.f16.my {
+  background-position:0-2640 px
+}.f16.mz {
+  background-position:0-2656 px
+}.f16.na {
+  background-position:0-2672 px
+}.f16.nc {
+  background-position:0-2688 px
+}.f16.ne {
+  background-position:0-2704 px
+}.f16.ng {
+  background-position:0-2720 px
+}.f16.ni {
+  background-position:0-2736 px
+}.f16.nl {
+  background-position:0-2752 px
+}.f16.bq {
+  background-position:0-2752 px
+}.f16.no {
+  background-position:0-2768 px
+}.f16.bv, .f16.nq, .f16.sj {
+  background-position:0-2768 px
+}.f16.np {
+  background-position:0-2784 px
+}.f16.nr {
+  background-position:0-2800 px
+}.f16.nz {
+  background-position:0-2816 px
+}.f16.om {
+  background-position:0-2832 px
+}.f16.pa {
+  background-position:0-2848 px
+}.f16.pe {
+  background-position:0-2864 px
+}.f16.pf {
+  background-position:0-2880 px
+}.f16.pg {
+  background-position:0-2896 px
+}.f16.ph {
+  background-position:0-2912 px
+}.f16.pk {
+  background-position:0-2928 px
+}.f16.pl {
+  background-position:0-2944 px
+}.f16.pr {
+  background-position:0-2960 px
+}.f16.ps {
+  background-position:0-2976 px
+}.f16.pt {
+  background-position:0-2992 px
+}.f16.pw {
+  background-position:0-3008 px
+}.f16.py {
+  background-position:0-3024 px
+}.f16.qa {
+  background-position:0-3040 px
+}.f16.re {
+  background-position:0-3056 px
+}.f16.ro {
+  background-position:0-3072 px
+}.f16.rs {
+  background-position:0-3088 px
+}.f16.ru {
+  background-position:0-3104 px
+}.f16.rw {
+  background-position:0-3120 px
+}.f16.sa {
+  background-position:0-3136 px
+}.f16.sb {
+  background-position:0-3152 px
+}.f16.sc {
+  background-position:0-3168 px
+}.f16.sd {
+  background-position:0-3184 px
+}.f16.se {
+  background-position:0-3200 px
+}.f16.sg {
+  background-position:0-3216 px
+}.f16.si {
+  background-position:0-3232 px
+}.f16.sk {
+  background-position:0-3248 px
+}.f16.sl {
+  background-position:0-3264 px
+}.f16.sm {
+  background-position:0-3280 px
+}.f16.sn {
+  background-position:0-3296 px
+}.f16.so {
+  background-position:0-3312 px
+}.f16.sr {
+  background-position:0-3328 px
+}.f16.st {
+  background-position:0-3344 px
+}.f16.sv {
+  background-position:0-3360 px
+}.f16.sy {
+  background-position:0-3376 px
+}.f16.sz {
+  background-position:0-3392 px
+}.f16.tc {
+  background-position:0-3408 px
+}.f16.td {
+  background-position:0-3424 px
+}.f16.tg {
+  background-position:0-3440 px
+}.f16.th {
+  background-position:0-3456 px
+}.f16.tj {
+  background-position:0-3472 px
+}.f16.tl {
+  background-position:0-3488 px
+}.f16.tm {
+  background-position:0-3504 px
+}.f16.tn {
+  background-position:0-3520 px
+}.f16.to {
+  background-position:0-3536 px
+}.f16.tr {
+  background-position:0-3552 px
+}.f16.tt {
+  background-position:0-3568 px
+}.f16.tv {
+  background-position:0-3584 px
+}.f16.tw {
+  background-position:0-3600 px
+}.f16.tz {
+  background-position:0-3616 px
+}.f16.ua {
+  background-position:0-3632 px
+}.f16.ug {
+  background-position:0-3648 px
+}.f16.us {
+  background-position:0-3664 px
+}.f16.uy {
+  background-position:0-3680 px
+}.f16.uz {
+  background-position:0-3696 px
+}.f16.va {
+  background-position:0-3712 px
+}.f16.vc {
+  background-position:0-3728 px
+}.f16.ve {
+  background-position:0-3744 px
+}.f16.vg {
+  background-position:0-3760 px
+}.f16.vi {
+  background-position:0-3776 px
+}.f16.vn {
+  background-position:0-3792 px
+}.f16.vu {
+  background-position:0-3808 px
+}.f16.ws {
+  background-position:0-3824 px
+}.f16.ye {
+  background-position:0-3840 px
+}.f16.za {
+  background-position:0-3856 px
+}.f16.zm {
+  background-position:0-3872 px
+}.f16.zw {
+  background-position:0-3888 px
+}.f16.sx {
+  background-position:0-3904 px
+}.f16.cw {
+  background-position:0-3920 px
+}.f16.ss {
+  background-position:0-3936 px
+}.f16.nu {
+  background-position:0-3952 px
+}.countrypicker.inline-flag {
+  margin-right: 5px
+}.countrypicker.filter-option.flag {
+  padding-left: 20px;
+  margin-top: 3px
+}.countrypicker.dropdown-menu.open {
+  padding: 0
+}

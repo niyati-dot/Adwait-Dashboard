@@ -1,0 +1,69 @@
+{% extends 'adwaitapp/base.html' %}
+
+{% block content %}
+
+<div class="bg-gray-200 text-sm">
+  <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0 py-3">
+        <li class="breadcrumb-item"><a class="fw-light" href="{% url 'dashboard' %}">Home</a></li>
+        <li class="breadcrumb-item active fw-light" aria-current="page">Contact Us</li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<section class="tables pt-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header border-bottom">
+            <h3 class="h4 mb-0">Update Contact Info</h3>
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal" method="post">
+              {% csrf_token %}
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Company Location *</label>
+                  <input class="form-control" type="text" name="location" placeholder="Enter Company Location" value="{{ contact.location }}" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Company Address *</label>
+                  <input class="form-control" type="text" name="address" placeholder="Enter Company Address" value="{{ contact.address }}" required>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Email</label>
+                  <input class="form-control" type="email" name="email" placeholder="Enter Email" value="{{ contact.email }}">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Phone</label>
+                  <input class="form-control" type="tel" name="phone" placeholder="Enter Phone Number" value="{{ contact.phone }}">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-12">
+                  <label class="form-label">Google Map Frame</label>
+                  <textarea class="form-control" rows="2" cols="5" name="map" placeholder="Enter Link...">{{ contact.map }}</textarea>
+                </div>
+              </div>
+              <div class="border-bottom my-3 border-gray-200"></div>
+              <div class="row">
+                <div class="col-sm-9">
+                  <button class="btn btn-primary" type="submit">Save changes</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

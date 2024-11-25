@@ -1,0 +1,152 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Adwait Solutions</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/choices.js/public/assets/styles/choices.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/overlayscrollbars/css/OverlayScrollbars.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.default.css' %}" id="theme-stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+<body>
+    <!-- Side Navbar -->
+  <nav class="side-navbar">
+    <div class="side-navbar-inner">
+      <div class="sidebar-header d-flex align-items-center justify-content-center p-3 mb-3">
+        <div class="sidenav-header-inner text-center"><img class="img-fluid avatar mb-3"
+            src="{% static 'img/logo1.png' %}" alt="person">
+          <h2 class="h7 text-white text-uppercase mb-0"><i class="fa fa-user-secret px-1" aria-hidden="true"></i> {{user}}</h2>
+          <p class="text-sm mb-0"></p>
+        </div>
+        <a class="brand-small text-center" href="{% url 'dashboard' %}">
+          <p class="h1 m-0">AS</p>
+        </a>
+      </div>
+      <ul class="list-unstyled pb-5 main-slide">
+        <li class="title-main text-uppercase fw-bold letter-spacing-0 mx-lg-2 heading">Main</li>
+        <li class="sidebar-item"><a class="sidebar-link" href="{% url 'dashboard' %}">
+          <i class="fa fa-tachometer px-3" aria-hidden="true"></i>
+            </i> Dashboard </a></li>
+        
+  
+        <li class="title-main text-uppercase fw-bold letter-spacing-0 mx-lg-2 heading">Web Master</li>
+        <!---<li class="sidebar-item"><a class="sidebar-link" href="{% url  '' %}">
+          <i class="fa fa-history px-3" aria-hidden="true">
+          </i>About Us</a></li>--->
+        <!---<li class="sidebar-item"><a class="sidebar-link" href="{% url  '' %}">
+            <i class="fa fa-folder-open-o px-3" aria-hidden="true">
+          </i>Portfolio</a></li>--->
+        <li class="sidebar-item"><a class="sidebar-link" href="{% url  'main_service' %}">
+          <i class="fa fa-cog px-3" aria-hidden="true">
+          </i>Main Services</a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="{% url  'sub_service' %}">
+          <i class="fa fa-cogs px-3" aria-hidden="true">
+          </i>Sub Services</a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="{% url  'technologies' %}">
+          <i class="fa fa-code px-3" aria-hidden="true">
+          </i>Technologies</a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="{% url  'portfolio' %}">
+          <i class="fa fa-picture-o px-3" aria-hidden="true">
+          </i>Portdolio</a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="{% url  'blogs' %}">
+          <i class="fa fa-tags px-3" aria-hidden="true">
+          </i>Blogs</a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="{% url  'contact' %}">
+          <i class="fa fa-map-marker px-3" aria-hidden="true">
+          </i>Contact Us</a></li>
+
+        <li class="title-main text-uppercase fw-bold letter-spacing-0 mx-lg-2 heading">Management</li>
+        <li class="sidebar-item"><a class="sidebar-link" href="{% url  'inquiry' %}">
+          <i class="fa fa-envelope-open-o px-3" aria-hidden="true">
+          </i>Web Inquiries</a></li>
+        <!-- <li class="sidebar-item"><a class="sidebar-link" href="{% url  '' %}">
+          <i class="fa fa-life-ring px-3" aria-hidden="true">
+          </i>Support</a></li> -->
+        <li class="sidebar-item"><a class="sidebar-link" href="{% url  'customers' %}">
+          <i class="fa fa-address-book px-3" aria-hidden="true">
+          </i>Customers </a></li>
+        <li class="sidebar-item"><a class="sidebar-link" href="{% url  'developers' %}">
+          <i class="fa fa-users px-3" aria-hidden="true">
+          </i>Developers</a></li>
+
+      </ul>
+    </div>
+  </nav>
+  <div class="page">
+    <!-- navbar-->
+    <header class="header mb-5 pb-3">
+      <nav class="nav navbar fixed-top">
+        <div class="container-fluid">
+          <div class="d-flex align-items-center justify-content-between w-100">
+            <div class="d-flex align-items-center"><a
+                class="menu-btn d-flex align-items-center justify-content-center p-2 bg-gray-900" id="toggle-btn" href="{% url 'dashboard' %}">
+                <i class="fa fa-outdent" aria-hidden="true"></i></a>
+                <a class="navbar-brand ms-2" href="{% url 'dashboard' %}">
+                  <div class="brand-text d-none d-md-inline-block text-uppercase letter-spacing-0">
+                    <span class="text-white fw-normal text-xs">Adwait </span><strong class="text-primary text-sm"> Hub</strong></div>
+                </a>
+            </div>
+            <ul class="nav-menu mb-0 list-unstyled d-flex flex-md-row align-items-md-center">
+            <!-- Change Password-->
+              <li class="nav-item"><a class="nav-link text-white text-sm ps-0" href="{% url 'password' %}"> <i class="fa fa-key px-2"
+                aria-hidden="true"></i> <span class="d-none d-sm-inline-block">Change Password</span>
+            </a></li>
+            <!-- Log out-->
+              <li class="nav-item"><a class="nav-link text-white text-sm ps-0" href="{% url 'logout' %}"> <i class="fa fa-power-off px-2"
+                aria-hidden="true"></i> <span class="d-none d-sm-inline-block">Logout</span>
+            </a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>   
+        {% for message in messages %}
+            {% if message.tags == 'success' %}
+              <p id="message-timer" class="alert alert-success float-center text-center message-text mb-0 w-100"> <i class="fa fa-check" aria-hidden="true"></i> {{message}}</p>
+            {% elif message.tags == 'error' %}
+              <p id="message-alert" class="alert alert-danger float-center text-center message-text mb-0 w-100" role="alert"> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {{message}}</p>
+            {% endif %}
+        {% endfor %}
+
+        {% block content %}
+
+        {% endblock %}
+
+    <footer class="main-footer w-100 position-fixed bottom-0 start-0 py-2" style="background: #1a1a1a">
+        <div class="container-fluid">
+          <div class="row text-center gy-3">
+            <div class="col-sm-6 text-sm-start">{% now "Y" as current_year %}
+              <p class="mb-0 text-sm text-gray-500 text-center">Adwait Solutions &copy; 2019-{{current_year}}</p>
+            </div>
+            <div class="col-sm-6 text-sm-end">
+              <p class="mb-0 text-sm text-gray-500">Design with &#10084; by <a href=" "
+                  class="external">Adwait Solutions</a></p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- JavaScript files-->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script type="text/javascript" src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+      <script type="text/javascript" src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+      <script type="text/javascript" src="{% static 'vendor/just-validate/js/just-validate.min.js' %}"></script>
+      <script type="text/javascript" src="{% static 'vendor/choices.js/public/assets/scripts/choices.min.js' %}"></script>
+      <script type="text/javascript" src="{% static 'vendor/overlayscrollbars/js/OverlayScrollbars.min.js' %}"></script>
+      <script type="text/javascript" src="{% static 'js/charts-custom.js' %}"></script>
+      <script type="text/javascript" src="{% static 'js/front.js' %}"></script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+      <script type="text/javascript" src="{% static 'js/static.js' %}"></script>
+      </body>
+      </html>
+    
+

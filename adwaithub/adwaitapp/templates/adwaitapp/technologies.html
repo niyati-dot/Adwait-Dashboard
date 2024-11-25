@@ -1,0 +1,157 @@
+{% extends 'adwaitapp/base.html' %}
+
+{% block content %}
+
+<div class="bg-gray-200 text-sm">
+  <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0 py-3">
+        <li class="breadcrumb-item"><a class="fw-light" href="{% url 'dashboard' %}">Home</a></li>
+        <li class="breadcrumb-item active fw-light" aria-current="page">Technologies </li>
+      </ol>
+    </nav>
+  </div>
+</div>
+<section class="tables pt-5">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6" {% if not is_edit %} style="display: block;" {% else %} style="display: none;"{% endif %}>
+        <div class="card">
+          <div class="card-header border-bottom">
+            <h3 class="h4 mb-0">Add Technology</h3>
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal" method="post" action="{% url 'technologies_add' %}" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row mb-3">
+                <div class="col-sm-6">
+                  <label class="form-label">Name *</label>
+                  <input class="form-control" type="text" name="name" placeholder="Enter Technology Name" required>
+                </div>
+                <div class="col-sm-6">
+                  <label class="form-label">Tech Icon *</label>
+                  <input class="form-control" id="formFile" type="file" name="icon" required>
+                </div>
+              </div>
+              
+              <div class="row mb-3">
+                <div class="form-group text-center"><hr class="color-me-gray"><h6>Multiple Main Services</h6><hr class="color-me-gray"></div>
+                <div class="col-sm-9 px-4">
+                  {% for ms in main %}
+                  <div class="form-check admin">
+                    <input class="form-check-input" id="tech{{ ms.id }}" type="checkbox" name="main_services" value="{{ ms.id }}">
+                    <label class="form-check-label" for="defaultCheck0" value="{{ ms.id }}">{{ms.name}}</label>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="border-bottom my-3 border-gray-200"></div>
+              <div class="row">
+                <div class="col-sm-9">
+                  <button class="btn btn-primary" type="submit">Save changes</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6" {% if is_edit %} style="display: block;"{% else %} style="display: none;"{% endif %} >
+        <div class="card">
+          <div class="card-header border-bottom">
+            <h3 class="h4 mb-0">Edit Technology</h3>
+          </div>
+          <div class="card-body">
+            <form class="form-horizontal" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="row mb-3">
+                <div class="col-sm-6">
+                  <label class="form-label">Name *</label>
+                  <input class="form-control" type="text" name="name" placeholder="Enter Technology Name" value="{{technology.name}}" required>
+                </div>
+                <div class="col-sm-6">
+                  <label class="form-label">Icon * </label>
+                  {% if technology.icon %}<img src="../media/{{ technology.icon }}" width="100" height="100">{% else %}
+                  <input class="form-control" id="formFile" type="file" name="icon" required>
+                  {% endif %}
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="form-group text-center"><hr class="color-me-gray"><h6>Multiple Main Services</h6><hr class="color-me-gray"></div>
+                <div class="col-sm-9 px-4">
+                  {% for services in all_services %}
+                <div class="form-check admin">
+                    <input class="form-check-input" id="tech{{ services.id }}" type="checkbox" name="main_services" value="{{ services.id }}" {% if services.id in existing_services %} checked {% endif %}>
+                    <label class="form-check-label" for="tech{{ services.id }}">{{ services.name }}</label>
+                </div>
+                {% endfor %}
+                  </div>
+              </div>
+              <div class="border-bottom my-3 border-gray-200"></div>
+              <div class="row">
+                <div class="col-sm-9">
+                  <button class="btn btn-secondary"><a href="{% url 'technologies' %}" class="t-white">Close</a></button>
+                  <button class="btn btn-primary" type="submit">Save changes</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="card">
+          <div class="card-header border-bottom" style="display: inline-flex;">
+            <h3 class="h4 mb-0 w-100 mt-2">All Technologies</h3>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table text-sm mb-0">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>   
+                  {% for technology in technologies %}
+                  <tr>
+                    <th class="border-bottom-0" scope="row">{{forloop.counter}}</th>
+                    <td class="border-bottom-0">{{technology.name}}</td>
+                    <td class="border-bottom-0"><button class="btn btn-warning btnedit" type="edit"><a
+                          href="{% url 'technologies_edit' technology.id %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></button></td>
+
+                    <td class="border-bottom-0"><button class="btn btn-danger btnedit" type="delete" onclick="return confirm('Are you sure you want to Delete?')"><a href="{% url 'technologies_delete' technology.id %}"><i
+                          class="fa fa-trash-o" aria-hidden="true"></i></a></button></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <div class="pagination">
+                <span class="step-links">
+                    {% if technologies.has_previous %}
+                        <a href="?page=1"><i class="fa fa-angle-double-left" aria-hidden="true"></i></a>
+                        <a href="?page={{ technologies.previous_page_number }}">{{ technologies.previous_page_number}}</a>
+                    {% endif %}
+            
+                    <span class="current">
+                        {{ technologies.number }}
+                    </span>
+            
+                    {% if technologies.has_next %}
+                        <a href="?page={{ technologies.next_page_number }}">{{ technologies.next_page_number }}</a>
+                        {% if technologies.next_page_number != technologies.paginator.num_pages %}
+                        <a href="?page={{ technologies.paginator.num_pages }}"><i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+                        {% endif %}
+                    {% endif %}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
