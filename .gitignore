@@ -1,0 +1,29 @@
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment directories
+.env/
+.venv/
+env/
+venv/
+
+# Database files (useful if you're using SQLite)
+db.sqlite3
+
+# Media files (for user-uploaded content)
+media/
+
+# Static files (collected static files)
+static/
+
+# Django settings file, can contain sensitive data like SECRET_KEY
+settings.py
+
+# IDE and editor directories and files
+.vscode/
+.idea/
+
+# Operating system specific files
+.DS_Store
+Thumbs.db
